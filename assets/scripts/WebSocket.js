@@ -16,10 +16,12 @@ cc.Class({
         }
     },
 
+    // 判断是否连接
     isConnected: ()=>{return this.ws && this.ws.readyState === 1},
 
-    connect: function(fix = '') {
-        this.ws = new WebSocket('ws://'+config.url+':'+config.port+config.path+fix);
+    // 开启WebSocket连接
+    connect: function() {
+        this.ws = new WebSocket('ws://'+config.url+':'+config.port+config.path);
 
         this.ws.onopen = this.open;
         this.ws.onmessage = this.message;
@@ -27,18 +29,22 @@ cc.Class({
         this.ws.onerror = this.error;
     },
 
+    // 断开连接
     disconnect: function() {
         this.ws.close();
     },
 
+    // 向服务器发送数据信息
     send: function(data) {
         this.ws.send(JSON.stringify(data));
     },
 
+    // 成功连接回调
     open: function() {
         console.log('Connect Success!');
     },
 
+    // 收到消息回调
     message: function(res) {
         var data = JSON.parse(res.data);
         var socket = cc.find('App').getComponent('WebSocket');
@@ -48,10 +54,12 @@ cc.Class({
         }
     },
 
+    // 断开连接回调
     close: function() {
         var socket = cc.find('App').getComponent('WebSocket');
     },
 
+    // 连接错误回调
     error: function() {},
 
     // LIFE-CYCLE CALLBACKS:

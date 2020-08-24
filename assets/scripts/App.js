@@ -14,6 +14,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        // 设置为全局节点
         cc.game.addPersistRootNode(this.node);
     },
 
