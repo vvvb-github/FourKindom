@@ -9,19 +9,20 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        rid: {
-            default: 0,
-            visible: false
-        }
+        text: cc.Node
     },
-
-    inRoom: ()=>{return rid > 0},
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        // 设置为全局节点
-        cc.game.addPersistRootNode(this.node);
+        this.node.on('mouseenter', (event)=>{
+            if(this.node.getComponent(cc.Button).interactable) {
+                this.text.setScale(1.1);
+            }
+        });
+        this.node.on('mouseleave', (event)=>{
+            this.text.setScale(1);
+        });
     },
 
     start () {

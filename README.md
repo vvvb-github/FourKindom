@@ -9,6 +9,7 @@
 - assets  // 资源/源码
     -- fonts  // 字体文件夹
     -- images  // 图片文件夹
+    -- prefabs  // 预制资源文件夹
     -- scenes  // 场景文件夹
     -- scripts // 脚本文件夹
     -- sounds // 音效文件夹
